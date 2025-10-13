@@ -81,7 +81,7 @@ const Footer: FC<Props> = ({
     //   identifiedBy
     // })}`
 
-    const link = `https://sepolia.etherscan.io/tx/${txnId}`
+    const link = `https://etherscan.io/tx/${txnId}`
 
     try {
       await createTab(link)
