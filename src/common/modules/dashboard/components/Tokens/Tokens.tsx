@@ -105,6 +105,8 @@ const Tokens = ({
     [portfolio?.tokens, dashboardNetworkFilter, searchValue, networks]
   )
 
+  console.log('tokens', tokens)
+
   const userHasNoBalance = useMemo(
     // Exclude gas tank tokens from the check
     // as new users get some Gas Tank balance by default
