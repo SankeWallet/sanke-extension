@@ -102,11 +102,7 @@ function TransferScreen() {
 
     if (!submittedChainId || !identifiedBy || !txnId) return
 
-    return `https://explorer.ambire.com/${getBenzinUrlParams({
-      chainId: submittedChainId,
-      txnId,
-      identifiedBy
-    })}`
+    return `https://etherscan.io/tx/${txnId}`
   }, [submittedAccountOp])
 
   useEffect(() => {
@@ -266,7 +262,7 @@ function TransferScreen() {
           <Failed
             title={t('Something went wrong!')}
             errorMessage={t(
-              "We couldn't complete your deposit. Please try again later or contact Kohaku support."
+              "We couldn't complete your deposit. Please try again later or contact Sanke support."
             )}
           />
         )}
