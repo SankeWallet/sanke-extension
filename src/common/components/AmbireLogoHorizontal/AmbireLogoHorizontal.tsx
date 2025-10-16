@@ -1,6 +1,6 @@
 import React from 'react'
 import { Image, ImageStyle, StyleProp } from 'react-native'
-import kohakuLogoHorizontal from '../../../web/assets/kohaku-horizontal.png'
+import sankeLogoHorizontal from '../../../web/assets/sanke-horizontal.png'
 
 type AmbireLogoHorizontalProps = {
   width?: number
@@ -15,7 +15,7 @@ const AmbireLogoHorizontal: React.FC<AmbireLogoHorizontalProps> = ({
 }) => {
   return (
     <Image
-      source={{ uri: kohakuLogoHorizontal }}
+      source={{ uri: sankeLogoHorizontal }}
       style={[{ width, height }, style]}
       resizeMode="contain"
     />
