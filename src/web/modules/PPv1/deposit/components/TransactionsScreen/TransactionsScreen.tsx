@@ -24,7 +24,7 @@ import {
 import { getUiType } from '@web/utils/uiType'
 // import { useTranslation } from 'react-i18next'
 
-import HokahuLogo from '@common/components/HokahuLogo'
+import HokahuLogo from '@common/components/SankeLogo'
 import HeaderBackButton from '@common/modules/header/components/HeaderBackButton'
 import getStyles from './styles'
 
