@@ -220,7 +220,7 @@ function getIntervalRefreshTime(constUpdateInterval: number, newestOpTimestamp: 
 }
 
 // eslint-disable-next-line @typescript-eslint/no-floating-promises
-;(async () => {
+; (async () => {
   // Init sentry
   if (CONFIG.SENTRY_DSN_BROWSER_EXTENSION) {
     Sentry.init({
@@ -1177,4 +1177,4 @@ browser.runtime.onInstalled.addListener(({ reason }: any) => {
 // TODO: Found the root cause of this! Event handler of 'disconnect' event must be added on the initial
 // evaluation of worker script. More info: https://developer.chrome.com/docs/extensions/mv3/service_workers/events/
 // Would be tricky to replace this workaround with different logic, but it's doable.
-if ('hid' in navigator) navigator.hid.addEventListener('disconnect', () => {})
+if ('hid' in navigator) navigator.hid.addEventListener('disconnect', () => { })
