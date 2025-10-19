@@ -23,7 +23,7 @@ import {
 import useSelectedAccountControllerState from '@web/hooks/useSelectedAccountControllerState'
 import { getUiType } from '@web/utils/uiType'
 
-import KohakuLogo from '@common/components/HokahuLogo'
+import SankeLogo from '@common/components/SankeLogo'
 import getStyles from './styles'
 
 const { isTab } = getUiType()
@@ -92,7 +92,7 @@ const Wrapper: FC<WrapperProps> = ({ children, title, handleGoBack, buttons }) =
               {title}
             </Text>
             <View style={[styles.headerSideContainer, { alignItems: 'flex-end' }]}>
-              <KohakuLogo width={72} />
+              <SankeLogo width={72} />
             </View>
           </View>
         </Header>
