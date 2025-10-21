@@ -157,15 +157,16 @@ const TokenItem = ({ token }: { token: TokenResult }) => {
                   />
                   <View style={[flexboxStyles.directionRow, flexboxStyles.alignCenter]}>
                     <Text weight="regular" shouldScale={false} fontSize={12}>
-                      {isRewards && t('Claimable rewards')}
+                      {/* {isRewards && t('Claimable rewards')}
                       {isVesting && !isPopup && t('Claimable early supporters vestings')}
                       {isVesting && isPopup && t('Claimable vestings')}
-                      {!isRewards && !isVesting && t('on')}{' '}
+                      {!isRewards && !isVesting && t('on')}{' '} */}
+                      On Ethereum
                     </Text>
-                    <Text weight="regular" style={[spacings.mrMi]} fontSize={12}>
+                    {/* <Text weight="regular" style={[spacings.mrMi]} fontSize={12}>
                       {onGasTank && t('Gas Tank')}
                       {!onGasTank && !isRewards && !isVesting && networkData?.name}
-                    </Text>
+                    </Text> */}
                   </View>
                 </View>
                 {isRewards && (
