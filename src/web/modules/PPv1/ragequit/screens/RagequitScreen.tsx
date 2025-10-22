@@ -244,7 +244,7 @@ function RagequitScreen() {
           <Failed
             title={t('Something went wrong!')}
             errorMessage={t(
-              "We couldn't complete your public exit. Please try again later or contact Kohaku support."
+              "We couldn't complete your public exit. Please try again later or contact Sanke support."
             )}
           />
         )}
