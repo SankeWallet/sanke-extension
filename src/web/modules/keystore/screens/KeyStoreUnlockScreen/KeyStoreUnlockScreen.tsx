@@ -27,7 +27,7 @@ import useBackgroundService from '@web/hooks/useBackgroundService'
 import useKeystoreControllerState from '@web/hooks/useKeystoreControllerState'
 import { getUiType } from '@web/utils/uiType'
 
-import KohakuLogo from '@common/components/HokahuLogo'
+import SankeLogo from '@common/components/SankeLogo'
 import getStyles from './styles'
 
 // const FOOTER_BUTTON_HIT_SLOP = { top: 10, bottom: 15 }
@@ -173,7 +173,7 @@ const KeyStoreUnlockScreen = () => {
               </View>
             )}
             <View style={[flexbox.flex1, flexbox.alignCenter, flexbox.justifyCenter]}>
-              <KohakuLogo width={300} height={height < 550 && !isPopup ? 90 : 140} />
+              <SankeLogo width={300} height={height < 550 && !isPopup ? 90 : 140} />
             </View>
             <View>
               <Text
