@@ -59,6 +59,7 @@ const DashboardPages = ({ onScroll, animatedOverviewHeight }: Props) => {
     return network?.name || null
   }, [dashboardNetworkFilter, networks, t])
 
+
   useEffect(() => {
     if (openTab !== prevOpenTab && !initTab?.[openTab]) {
       setInitTab((prev) => ({ ...prev, [openTab]: true }))
