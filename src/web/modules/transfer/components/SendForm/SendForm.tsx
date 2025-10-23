@@ -96,7 +96,6 @@ const SendForm = ({
     networks,
     isToToken: false
   })
-
   const disableForm = (!hasGasTank && isTopUp) || !tokens.length
 
   const handleChangeToken = useCallback(
