@@ -119,7 +119,7 @@ const NavMenu = () => {
               {hasPasswordSecret && (
                 <View style={[flexbox.justifyCenter, flexbox.alignCenter]}>
                   <Button
-                    text="Lock Kohaku"
+                    text="Lock Sanke"
                     type="secondary"
                     size="small"
                     childrenPosition="left"
