@@ -24,7 +24,7 @@ import useSelectedAccountControllerState from '@web/hooks/useSelectedAccountCont
 import { getUiType } from '@web/utils/uiType'
 import { useTranslation } from 'react-i18next'
 
-import HokahuLogo from '@common/components/HokahuLogo'
+import HokahuLogo from '@common/components/SankeLogo'
 import getStyles from './styles'
 
 const { isTab } = getUiType()
