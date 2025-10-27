@@ -24,7 +24,7 @@ import {
 import useBackgroundService from '@web/hooks/useBackgroundService'
 import useWalletStateController from '@web/hooks/useWalletStateController'
 
-import KohakuLogo from '@common/components/HokahuLogo'
+import SankeLogo from '@common/components/SankeLogo'
 import getStyles from './styles'
 
 export const CARD_WIDTH = 400
@@ -83,7 +83,7 @@ const GetStartedScreen = () => {
             <View
               style={[flexbox.justifyCenter, flexbox.alignCenter, flexbox.flex1, spacings.mbSm]}
             >
-              <KohakuLogo width={180} height={80} />
+              <SankeLogo width={180} height={80} />
               <Text style={[spacings.mtLg, text.center]} weight="medium" appearance="secondaryText">
                 {t('The Web3 wallet that makes self-custody easy and secure.')}
               </Text>
