@@ -9,7 +9,7 @@ import { useTranslation } from '@common/config/localization'
 import useTheme from '@common/hooks/useTheme'
 import spacings from '@common/styles/spacings'
 import flexbox from '@common/styles/utils/flexbox'
-import KohakuIcon from '@web/assets/kohaku.png'
+import SankeIcon from '@web/assets/sanke.png'
 import { engine } from '@web/constants/browserapi'
 import useWalletStateController from '@web/hooks/useWalletStateController'
 
@@ -31,11 +31,11 @@ const PinExtension = () => {
         { right: isPinned ? pinnedRightOffset : notPinnedRightOffset }
       ]}
     >
-      <Image source={KohakuIcon as any} style={{ width: 80, height: 80 }} />
+      <Image source={SankeIcon as any} style={{ width: 80, height: 80 }} />
       {!isPinned ? (
         <View style={spacings.ph}>
           <Text fontSize={16} weight="semiBold" style={spacings.mbMi}>
-            {t('Pin the Kohaku extension')}
+            {t('Pin the Sanke extension')}
           </Text>
           <View style={[flexbox.directionRow, flexbox.alignCenter]}>
             <Text appearance="secondaryText" weight="medium">
@@ -55,7 +55,7 @@ const PinExtension = () => {
       ) : (
         <View style={spacings.ph}>
           <Text fontSize={16} weight="medium" appearance="secondaryText">
-            {t('Open Kohaku from your browser toolbar.')}
+            {t('Open Sanke from your browser toolbar.')}
           </Text>
         </View>
       )}
