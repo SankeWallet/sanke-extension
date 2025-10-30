@@ -17,16 +17,16 @@ export type ThemeProps = {
 
 const ThemeColors = {
   primary: {
-    [THEME_TYPES.DARK]: '#FFFFFF',
-    [THEME_TYPES.LIGHT]: '#000000'
+    [THEME_TYPES.DARK]: '#FE4F18',
+    [THEME_TYPES.LIGHT]: '#FE4F18'
   },
   primary20: {
     [THEME_TYPES.DARK]: '#FFFFFF20',
     [THEME_TYPES.LIGHT]: '#00000020'
   },
   primaryLight: {
-    [THEME_TYPES.DARK]: '#2A2A2A',
-    [THEME_TYPES.LIGHT]: '#1A1A1A'
+    [THEME_TYPES.DARK]: '#FE4F18',
+    [THEME_TYPES.LIGHT]: '#FE4F18'
   },
   primaryLight80: {
     [THEME_TYPES.DARK]: '#2A2A2A80',
@@ -34,7 +34,7 @@ const ThemeColors = {
   },
   primaryText: {
     [THEME_TYPES.DARK]: '#FFFFFF',
-    [THEME_TYPES.LIGHT]: '#000000'
+    [THEME_TYPES.LIGHT]: '#000'
   },
   primaryTextInverted: {
     [THEME_TYPES.DARK]: '#000000',
@@ -106,12 +106,12 @@ const ThemeColors = {
     [THEME_TYPES.LIGHT]: '#006D3F'
   },
   successDecorative: {
-    [THEME_TYPES.DARK]: '#70FF8D',
+    [THEME_TYPES.DARK]: '#00A24E',
     [THEME_TYPES.LIGHT]: '#018649'
   },
   successBackground: {
-    [THEME_TYPES.DARK]: '#1d2a1f',
-    [THEME_TYPES.LIGHT]: '#EBF5F0'
+    [THEME_TYPES.DARK]: '#00A24E',
+    [THEME_TYPES.LIGHT]: '#00A24E'
   },
   // Info
   infoText: {
