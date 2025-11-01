@@ -109,9 +109,9 @@ const ReceiveModal: FC<Props> = ({ modalRef, handleClose }) => {
           </Text>
           <View style={styles.supportedNetworks}>
             {networks.map(({ chainId, name }: any) => (
-              <View key={chainId.toString()} style={styles.supportedNetwork}>
+              <View key={"1"} style={styles.supportedNetwork}>
                 <View style={spacings.mbMi}>
-                  <NetworkIcon id={chainId.toString()} size={22} scale={0.6} />
+                  <NetworkIcon id={"1"} size={22} scale={0.6} />
                 </View>
                 <Text
                   style={spacings.plMi}
@@ -120,7 +120,7 @@ const ReceiveModal: FC<Props> = ({ modalRef, handleClose }) => {
                   appearance="secondaryText"
                   weight="regular"
                 >
-                  {name}
+                  Ethereum
                 </Text>
               </View>
             ))}
