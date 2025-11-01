@@ -13,7 +13,7 @@ import flexbox from '@common/styles/utils/flexbox'
 import { tabLayoutWidths } from '@web/components/TabLayoutWrapper'
 import { getUiType } from '@web/utils/uiType'
 
-import KohakuLogo from '@common/components/HokahuLogo'
+import SankeLogo from '@common/components/SankeLogo'
 import getStyles from './styles'
 
 interface Props {
@@ -119,7 +119,7 @@ const Header = ({
           {/* Middle content end */}
           {!!withAmbireLogo && (
             <View style={[styles.sideContainer, flexbox.alignEnd]}>
-              <KohakuLogo width={72} />
+              <SankeLogo width={72} />
             </View>
           )}
         </View>
