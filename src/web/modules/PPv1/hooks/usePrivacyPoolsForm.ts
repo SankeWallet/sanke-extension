@@ -244,6 +244,7 @@ const usePrivacyPoolsForm = () => {
       value: BigInt(depositAmount)
     }
 
+
     await syncSignAccountOp([result])
     openEstimationModalAndDispatch()
   }
@@ -336,8 +337,7 @@ const usePrivacyPoolsForm = () => {
     console.log(`   Generated ${algorithmResults.length} candidate strategies`)
     algorithmResults.forEach((result, index) => {
       console.log(
-        `   ${index + 1}. ${result.name} - Privacy Score: ${result.privacyScore.toFixed(4)} ${
-          result.isChosen ? '🏆 WINNER' : ''
+        `   ${index + 1}. ${result.name} - Privacy Score: ${result.privacyScore.toFixed(4)} ${result.isChosen ? '🏆 WINNER' : ''
         }`
       )
     })
