@@ -1,5 +1,5 @@
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react'
-import { Animated, Pressable, View } from 'react-native'
+import { Animated, ImageBackground, Pressable, View } from 'react-native'
 
 import formatDecimals from '@ambire-common/utils/formatDecimals/formatDecimals'
 import SkeletonLoader from '@common/components/SkeletonLoader'
@@ -132,10 +132,10 @@ const DashboardOverview: FC<Props> = ({
                 outputRange: [SPACING_TY, SPACING],
                 extrapolate: 'clamp'
               }),
-              backgroundColor:
-                themeType === THEME_TYPES.DARK
-                  ? `${DASHBOARD_OVERVIEW_BACKGROUND}80`
-                  : DASHBOARD_OVERVIEW_BACKGROUND,
+              // backgroundColor:
+              //   themeType === THEME_TYPES.DARK
+              //     ? `${DASHBOARD_OVERVIEW_BACKGROUND}80`
+              //     : DASHBOARD_OVERVIEW_BACKGROUND,
               overflow: 'hidden'
             }
           ]}
@@ -146,7 +146,20 @@ const DashboardOverview: FC<Props> = ({
             })
           }}
         >
-          <Gradients width={dashboardOverviewSize.width} height={dashboardOverviewSize.height} />
+          <ImageBackground
+            source={require('@web/assets/bg-dashboard-overview.png')}
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              width: '100%',
+              height: '100%',
+            }}
+            resizeMode="cover"
+          />
+          {/* <Gradients width={dashboardOverviewSize.width} height={dashboardOverviewSize.height} /> */}
           <View style={{ zIndex: 2 }}>
             <DashboardHeader />
             <Animated.View
