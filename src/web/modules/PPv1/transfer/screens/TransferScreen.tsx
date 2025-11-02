@@ -128,11 +128,7 @@ const TransferScreen = () => {
 
     if (!submittedChainId || !identifiedBy || !txnId) return
 
-    return `https://explorer.ambire.com/${getBenzinUrlParams({
-      chainId: submittedChainId,
-      txnId,
-      identifiedBy
-    })}`
+    return `https://etherscan.io/tx/${txnId}`
   }, [submittedAccountOp])
 
   useEffect(() => {
@@ -345,7 +341,7 @@ const TransferScreen = () => {
           <Failed
             title={t('Something went wrong!')}
             errorMessage={t(
-              "We couldn't complete your transfer. Please try again later or contact Kohaku support."
+              "We couldn't complete your transfer. Please try again later or contact Sanke support."
             )}
           />
         )}
