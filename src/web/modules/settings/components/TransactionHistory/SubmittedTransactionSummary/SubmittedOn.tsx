@@ -57,9 +57,9 @@ const SubmittedOn = ({
           iconSize={iconSize}
           renderNetworkName={(networkName) => {
             if (isPopup)
-              return networkName.length > 7 ? `${networkName.slice(0, 7)}...` : networkName
+              // return networkName.length > 7 ? `${networkName.slice(0, 7)}...` : networkName
 
-            return networkName
+            return "Ethereum"
           }}
         />
       </Text>
