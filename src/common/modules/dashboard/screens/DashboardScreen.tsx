@@ -47,6 +47,8 @@ const DashboardScreen = () => {
 
   const { account, portfolio, cashbackStatus } = useSelectedAccountControllerState()
 
+  console.log('portfolio', portfolio)
+
   const { loadPrivateAccount, isAccountLoaded, isReadyToLoad } = usePrivacyPoolsForm()
 
   const onWithdrawBack = useCallback(() => {
