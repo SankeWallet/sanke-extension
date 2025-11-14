@@ -176,7 +176,7 @@ const PrivacyPoolsControllerStateProvider: React.FC<any> = ({ children }) => {
   const { dispatch } = useBackgroundService()
   // const { portfolio } = useSelectedAccountControllerState()
   // const { networks } = useNetworksControllerState()
-  const chainId = 11155111 // Default PP chainId
+  const chainId = 1 // Default PP chainId
   const PROOFS_BATCH_SIZE = 10
 
   const [sdk, setSdk] = useState<PrivacyPoolSDK>()
@@ -223,6 +223,7 @@ const PrivacyPoolsControllerStateProvider: React.FC<any> = ({ children }) => {
         aspClient.fetchMtRoots(aspUrl, chainId, scope),
         aspClient.fetchMtLeaves(aspUrl, chainId, scope)
       ])
+
 
       setMtRoots(rootsData)
       setMtLeaves(leavesData)
@@ -285,6 +286,7 @@ const PrivacyPoolsControllerStateProvider: React.FC<any> = ({ children }) => {
 
   const loadPrivateAccount = useCallback(async () => {
     if (isAccountLoaded || isLoadingAccount) return
+
     if (!isReadyToLoad) throw new Error('Privacy Pools data not ready yet')
 
     try {
@@ -512,6 +514,7 @@ const PrivacyPoolsControllerStateProvider: React.FC<any> = ({ children }) => {
 
       const sdkModule = new PrivacyPoolSDK(circuits)
       const ds = new DataService(dataServiceConfig)
+
 
       setDataService(ds)
       setSdk(sdkModule)

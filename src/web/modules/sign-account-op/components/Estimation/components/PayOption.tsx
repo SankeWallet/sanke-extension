@@ -48,12 +48,21 @@ const PayOption = ({
     return formatDecimals(Number(formatUnits(amount, feeOption.token.decimals)), 'amount')
   }, [amount, feeOption.token.decimals])
 
+  // const feeTokenNetworkName = useMemo(() => {
+  //   if (feeOption.token.flags.onGasTank) {
+  //     return 'Gas Tank'
+  //   }
+
+  //   return networks.find((n) => n.chainId === feeOption.token.chainId)?.name || ''
+  // }, [feeOption.token.flags.onGasTank, feeOption.token.chainId, networks])
+
   const feeTokenNetworkName = useMemo(() => {
     if (feeOption.token.flags.onGasTank) {
       return 'Gas Tank'
     }
 
-    return networks.find((n) => n.chainId === feeOption.token.chainId)?.name || ''
+    const networkName = networks.find((n) => n.chainId === feeOption.token.chainId)?.name || ''
+    return networkName === 'Sepolia' ? 'Ethereum' : networkName
   }, [feeOption.token.flags.onGasTank, feeOption.token.chainId, networks])
 
   const warning = useMemo(() => {

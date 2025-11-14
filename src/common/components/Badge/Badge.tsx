@@ -25,7 +25,7 @@ const getBadgeTypes = (theme: ThemeProps) => ({
     iconColor: theme.secondaryText
   },
   success: {
-    color: theme.successText,
+    color: "#fff",
     iconColor: theme.successDecorative
   },
   warning: {

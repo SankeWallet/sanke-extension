@@ -75,6 +75,31 @@ const HistorySettingsPage: FC<Props> = ({ HistoryComponent, historyType, session
     setCurrentSettingsPage(historyType)
   }, [setCurrentSettingsPage, historyType])
 
+  const sepoliaNetwork = useMemo(
+    () => networks.find((n) => n.chainId === 11155111n), // Sepolia chainId
+    [networks]
+  )
+
+  const fakeEthereumNetwork = useMemo(() => {
+    if (!sepoliaNetwork) return null
+    
+    const ALCHEMY_API_KEY = process.env.REACT_APP_ALCHEMY_API_KEY
+    
+    return {
+      ...sepoliaNetwork,
+      name: 'Ethereum',
+      chainId: 1n,
+      rpcUrls: [`https://eth-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}`],
+      selectedRpcUrl: `https://eth-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}`,
+      explorerUrl: 'https://etherscan.io',
+      platformId: 'ethereum',
+      nativeAssetId: 'ethereum',
+      nativeAssetSymbol: 'ETH',
+      nativeAssetName: 'Ether',
+      wrappedAddr: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'
+    }
+  }, [sepoliaNetwork])
+
   const itemsTotal =
     (historyType === 'messages'
       ? activityState.signedMessages?.[sessionId]?.result.itemsTotal
@@ -93,17 +118,34 @@ const HistorySettingsPage: FC<Props> = ({ HistoryComponent, historyType, session
     }))
   }, [accounts])
 
-  const networksOptions: SelectValue[] = useMemo(
-    () => [
+  const ETHEREUM_NETWORK_OPTION = useMemo(() => {
+    if (!fakeEthereumNetwork) return null
+    return {
+      value: fakeEthereumNetwork.name,
+      label: <Text weight="medium">Ethereum</Text>,
+      icon: <NetworkIcon key={fakeEthereumNetwork.chainId.toString()} id="1" /> // Use Ethereum icon
+    }
+  }, [fakeEthereumNetwork])
+
+  // const networksOptions: SelectValue[] = useMemo(
+  //   () => [
+  //     ALL_NETWORKS_OPTION,
+  //     ...networks.map((n) => ({
+  //       value: n.name,
+  //       label: <Text weight="medium">{n.name}</Text>,
+  //       icon: <NetworkIcon key={n.chainId.toString()} id={n.chainId.toString()} />
+  //     }))
+  //   ],
+  //   [networks]
+  // )
+  const networksOptions: SelectValue[] = useMemo(() => {
+    if (!ETHEREUM_NETWORK_OPTION) return [ALL_NETWORKS_OPTION]
+    
+    return [
       ALL_NETWORKS_OPTION,
-      ...networks.map((n) => ({
-        value: n.name,
-        label: <Text weight="medium">{n.name}</Text>,
-        icon: <NetworkIcon key={n.chainId.toString()} id={n.chainId.toString()} />
-      }))
-    ],
-    [networks]
-  )
+      ETHEREUM_NETWORK_OPTION
+    ]
+  }, [ETHEREUM_NETWORK_OPTION])
 
   const isLoading = useMemo(() => {
     if (historyType === 'messages') {
@@ -191,6 +233,17 @@ const HistorySettingsPage: FC<Props> = ({ HistoryComponent, historyType, session
     [accounts]
   )
 
+  // const handleSetNetworkValue = useCallback(
+  //   (networkOption: SelectValue) => {
+  //     setPage(1)
+  //     if (networkOption.value === 'all') {
+  //       setNetwork(null)
+  //       return
+  //     }
+  //     setNetwork(networks.filter((n) => n.name === networkOption.value)[0])
+  //   },
+  //   [networks]
+  // )
   const handleSetNetworkValue = useCallback(
     (networkOption: SelectValue) => {
       setPage(1)
@@ -198,9 +251,10 @@ const HistorySettingsPage: FC<Props> = ({ HistoryComponent, historyType, session
         setNetwork(null)
         return
       }
-      setNetwork(networks.filter((n) => n.name === networkOption.value)[0])
+      // Set the fake Ethereum network instead of looking it up
+      setNetwork(fakeEthereumNetwork)
     },
-    [networks]
+    [fakeEthereumNetwork]
   )
 
   const goToNextPageDisabled = useMemo(() => {

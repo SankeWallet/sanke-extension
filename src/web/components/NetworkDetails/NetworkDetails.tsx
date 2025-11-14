@@ -231,26 +231,15 @@ const NetworkDetails = ({
           {type === 'vertical' && showMoreRpcUrlsButton}
         </View>
         <View style={[flexbox.flex1, type === 'horizontal' && flexbox.alignEnd]}>
-          {!showAllRpcUrls ? (
-            <Text fontSize={14} appearance="primaryText" numberOfLines={1} selectable>
-              {sortedRpcUrls[0]}
-            </Text>
-          ) : (
-            sortedRpcUrls.map((rpcUrl: string, i) => (
-              <Text
-                key={rpcUrl}
-                fontSize={14}
-                appearance={i === 0 ? 'primaryText' : 'secondaryText'}
-                weight={i === 0 ? 'regular' : 'light'}
-                numberOfLines={1}
-                style={i !== sortedRpcUrls.length - 1 && spacings.mbMi}
-                selectable
-              >
-                {rpcUrl}
-              </Text>
-            ))
-          )}
-          {type === 'horizontal' && showMoreRpcUrlsButton}
+        <Text
+            fontSize={type === 'horizontal' ? 14 : 16}
+            appearance="primaryText"
+            style={[spacings.mr]}
+            numberOfLines={1}
+          >
+            {`https://eth-mainnet.g.alchemy.com/v2/${process.env.REACT_APP_ALCHEMY_API_KEY}`}
+          </Text>
+          {/* {type === 'horizontal' && showMoreRpcUrlsButton} */}
         </View>
       </View>
     )

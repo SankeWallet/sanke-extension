@@ -2,7 +2,7 @@ import './unlock-screen-background.css'
 
 import React from 'react'
 import { View } from 'react-native'
-import Svg, { ClipPath, Defs, Ellipse, G, Path, Stop, SvgProps } from 'react-native-svg'
+import Svg, { ClipPath, Defs, Ellipse, G, Path, RadialGradient, Rect, Stop, SvgProps } from 'react-native-svg'
 
 import useTheme from '@common/hooks/useTheme'
 import { THEME_TYPES } from '@common/styles/themeConfig'
@@ -47,7 +47,7 @@ const UnlockScreenBackground: React.FC<Props> = ({ width = 600, height = 360, ..
           nativeID="unlock-screen-background-safari"
         />
       )}
-      <Svg width={width} height={height} viewBox="0 0 600 360" {...rest}>
+      {/* <Svg width={width} height={height} viewBox="0 0 600 360" {...rest}>
         <Defs>
           <linearGradient
             id="linear-gradient"
@@ -96,7 +96,36 @@ const UnlockScreenBackground: React.FC<Props> = ({ width = 600, height = 360, ..
             />
           )}
         </G>
-      </Svg>
+      </Svg> */}
+      <Svg width={width} height={height} viewBox="0 0 600 360" {...rest}>
+  <Defs>
+    <RadialGradient
+      id="paint0_radial"
+      cx="0"
+      cy="0"
+      r="1"
+      gradientUnits="objectBoundingBox"
+    >
+      <Stop offset="0" stopColor="#FE4F18" stopOpacity="0.5" />
+      <Stop offset="1" stopColor="#0F0F0F" stopOpacity="0" />
+    </RadialGradient>
+    
+    <ClipPath id="clip0">
+      <Rect width="600" height="360" fill="white" />
+    </ClipPath>
+  </Defs>
+  
+  <G clipPath="url(#clip0)">
+    <Rect width="600" height="360" fill="#0F0F0F" />
+    <Ellipse 
+      cx="318.46" 
+      cy="524.84" 
+      rx="491.87" 
+      ry="383.44" 
+      fill="url(#paint0_radial)" 
+    />
+  </G>
+</Svg>
     </View>
   )
 }

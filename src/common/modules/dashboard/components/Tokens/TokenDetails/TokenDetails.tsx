@@ -39,6 +39,7 @@ import TokenDetailsButton from './Button'
 import CopyTokenAddress from './CopyTokenAddress'
 import HideTokenModal from './HideTokenModal'
 import getStyles from './styles'
+import SendTokenDetailIcon from '@common/assets/svg/SendTokenDetailIcon/SendTokenDetailIcon'
 
 const TokenDetails = ({
   token,
@@ -112,7 +113,7 @@ const TokenDetails = ({
       {
         id: 'send',
         text: t('Send'),
-        icon: SendIcon,
+        icon: SendTokenDetailIcon,
         onPress: ({ chainId, address }: TokenResult) =>
           navigate(`${WEB_ROUTES.transfer}?chainId=${chainId}&address=${address}`),
         isDisabled: isGasTankOrRewardsToken || isAmountZero,
@@ -139,8 +140,8 @@ const TokenDetails = ({
         isDisabled: shouldDisableSwapAndBridge,
         tooltipText: isNetworkNotSupportedForSwapAndBridge
           ? t(
-              'Unavailable. {{network}} network is not supported by our Swap & Bridge service provider.',
-              { network: network?.name || t('This') }
+              'Unavailable. Ethereum network is current maintained by our Swap & Bridge service provider.',
+              // { network: network?.name || t('This') }
             )
           : isGasTankOrRewardsToken
           ? unavailableBecauseGasTankOrRewardsTokenTooltipText
@@ -168,35 +169,35 @@ const TokenDetails = ({
       //   tooltipText: notImplementedYetTooltipText,
       //   strokeWidth: 1
       // },
-      {
-        id: 'top-up',
-        text: t('Top Up Gas Tank'),
-        icon: TopUpIcon,
-        onPress: async ({ chainId, address }: TokenResult) => {
-          const assets: { chainId: number; address: string }[] = await fetch(
-            `${RELAYER_URL}/gas-tank/assets`
-          )
-            .then((r) => r.json())
-            .catch(() => addToast(t('Error while fetching from relayer'), { type: 'error' }))
-          const canTopUp = !!assets.find(
-            (a) =>
-              getAddress(a.address) === getAddress(address) &&
-              a.chainId.toString() === chainId.toString()
-          )
-          if (canTopUp) navigate(`${WEB_ROUTES.topUpGasTank}?chainId=${chainId}&address=${address}`)
-          else addToast('We have disabled top ups with this token.', { type: 'error' })
-        },
-        isDisabled: !canToToppedUp || !hasGasTank,
-        tooltipText: !hasGasTank
-          ? t('Not available for hardware wallets yet.')
-          : !canToToppedUp
-          ? t(
-              'This token is not eligible for filling up the Gas Tank. Please select a supported token instead.'
-            )
-          : undefined,
-        strokeWidth: 1,
-        testID: 'top-up-button'
-      },
+      // {
+      //   id: 'top-up',
+      //   text: t('Top Up Gas Tank'),
+      //   icon: TopUpIcon,
+      //   onPress: async ({ chainId, address }: TokenResult) => {
+      //     const assets: { chainId: number; address: string }[] = await fetch(
+      //       `${RELAYER_URL}/gas-tank/assets`
+      //     )
+      //       .then((r) => r.json())
+      //       .catch(() => addToast(t('Error while fetching from relayer'), { type: 'error' }))
+      //     const canTopUp = !!assets.find(
+      //       (a) =>
+      //         getAddress(a.address) === getAddress(address) &&
+      //         a.chainId.toString() === chainId.toString()
+      //     )
+      //     if (canTopUp) navigate(`${WEB_ROUTES.topUpGasTank}?chainId=${chainId}&address=${address}`)
+      //     else addToast('We have disabled top ups with this token.', { type: 'error' })
+      //   },
+      //   isDisabled: !canToToppedUp || !hasGasTank,
+      //   tooltipText: !hasGasTank
+      //     ? t('Not available for hardware wallets yet.')
+      //     : !canToToppedUp
+      //     ? t(
+      //         'This token is not eligible for filling up the Gas Tank. Please select a supported token instead.'
+      //       )
+      //     : undefined,
+      //   strokeWidth: 1,
+      //   testID: 'top-up-button'
+      // },
       // Note: Withdraw is not implemented yet, so it is disabled.
       // {
       //   id: 'withdraw',
@@ -209,31 +210,31 @@ const TokenDetails = ({
       //     : notImplementedYetTooltipText,
       //   strokeWidth: 1
       // },
-      {
-        id: 'info',
-        text: t('Token Info'),
-        icon: InfoIcon,
-        onPress: async () => {
-          if (!coinGeckoTokenSlug || !token || !networks.length) return
+      // {
+      //   id: 'info',
+      //   text: t('Token Info'),
+      //   icon: InfoIcon,
+      //   onPress: async () => {
+      //     if (!coinGeckoTokenSlug || !token || !networks.length) return
 
-          if (!network) {
-            addToast(t('Network not found'), { type: 'error' })
-            return
-          }
+      //     if (!network) {
+      //       addToast(t('Network not found'), { type: 'error' })
+      //       return
+      //     }
 
-          try {
-            await createTab(getCoinGeckoTokenUrl(coinGeckoTokenSlug))
-            handleClose()
-          } catch {
-            addToast(t('Could not open token info'), { type: 'error' })
-          }
-        },
-        isDisabled: !coinGeckoTokenSlug,
-        tooltipText:
-          !coinGeckoTokenSlug && !isTokenInfoLoading
-            ? t('No data found for this token on CoinGecko.')
-            : undefined
-      }
+      //     try {
+      //       await createTab(getCoinGeckoTokenUrl(coinGeckoTokenSlug))
+      //       handleClose()
+      //     } catch {
+      //       addToast(t('Could not open token info'), { type: 'error' })
+      //     }
+      //   },
+      //   isDisabled: !coinGeckoTokenSlug,
+      //   tooltipText:
+      //     !coinGeckoTokenSlug && !isTokenInfoLoading
+      //       ? t('No data found for this token on CoinGecko.')
+      //       : undefined
+      // }
     ],
     [
       t,
@@ -346,17 +347,18 @@ const TokenDetails = ({
                 <Text selectable fontSize={20} weight="semiBold" style={spacings.mrSm}>
                   {symbol}
                 </Text>
-                <Text fontSize={16}>{isRewards && t('Claimable rewards')}</Text>
+                <Text fontSize={16}>On Ethereum</Text>
+                {/* <Text fontSize={16}>{isRewards && t('Claimable rewards')}</Text>
                 <Text fontSize={16}>{isVesting && t('Claimable early supporters vesting')}</Text>
                 <Text fontSize={16}>{!isRewards && !isVesting && t('on ')}</Text>
                 <Text fontSize={16}>{onGasTank && t('Gas Tank')}</Text>
                 <Text fontSize={16}>
                   {!onGasTank && !isRewards && !isVesting && networkData?.name}
-                </Text>{' '}
+                </Text>{' '} */}
                 <CopyTokenAddress address={address} isRewards={isRewards} isVesting={isVesting} />
               </Text>
             </View>
-            {!onGasTank && !isRewards && !isVesting && !token.flags.defiTokenType && (
+            {/* {!onGasTank && !isRewards && !isVesting && !token.flags.defiTokenType && (
               <View style={[flexbox.alignSelfEnd]}>
                 <AnimatedPressable
                   {...bindAnimHide}
@@ -368,7 +370,7 @@ const TokenDetails = ({
                   </Text>
                 </AnimatedPressable>
               </View>
-            )}
+            )} */}
           </View>
           <View style={styles.balance}>
             <Text

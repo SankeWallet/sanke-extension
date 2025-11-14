@@ -20,7 +20,7 @@ import { TAB_CONTENT_WIDTH } from '@web/constants/spacings'
 import useBackgroundService from '@web/hooks/useBackgroundService'
 import useWalletStateController from '@web/hooks/useWalletStateController'
 import PinExtension from '@web/modules/auth/components/PinExtension'
-import KohakuLogo from '@common/components/HokahuLogo'
+import SankeLogo from '@common/components/SankeLogo'
 
 export const CARD_WIDTH = 400
 
@@ -51,18 +51,18 @@ const OnboardingCompletedScreen = () => {
             <View style={[flexbox.flex1, flexbox.alignCenter, spacings.pt3Xl]}>
               <View style={[flexbox.alignCenter, flexbox.justifyCenter]}>
                 <ConfettiAnimation width={TAB_CONTENT_WIDTH} height={380} autoPlay={false} />
-                <KohakuLogo width={96} height={80} />
+                <SankeLogo width={96} height={80} />
               </View>
               <Text
                 style={[spacings.mtLg, spacings.mb, text.center]}
                 weight="semiBold"
                 fontSize={20}
               >
-                {t('Kohaku is ready to use')}
+                {t('Sanke is ready to use')}
               </Text>
               {!isPinned ? (
                 <Text appearance="secondaryText" weight="medium" style={[text.center]}>
-                  {t('Pin the Kohaku Extension to your toolbar for easy access.')}
+                  {t('Pin the Sanke Extension to your toolbar for easy access.')}
                 </Text>
               ) : (
                 <Text appearance="secondaryText" weight="medium" style={[text.center]}>

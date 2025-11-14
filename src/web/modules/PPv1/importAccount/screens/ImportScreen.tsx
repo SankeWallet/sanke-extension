@@ -165,7 +165,7 @@ const ImportScreen = () => {
           <Failed
             title={t('Import failed')}
             errorMessage={t(
-              "We couldn't import your Privacy Pool account. Please verify your mnemonic and try again, or contact Kohaku support."
+              "We couldn't import your Privacy Pool account. Please verify your mnemonic and try again, or contact Sanke support."
             )}
           />
         )}
