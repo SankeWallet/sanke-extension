@@ -101,7 +101,7 @@ const TabsAndSearch: FC<Props> = ({ openTab, setOpenTab, searchControl, sessionI
       />
       {TABS.includes(openTab) && (
         <View style={[flexbox.directionRow, flexbox.justifySpaceBetween, flexbox.alignCenter]}>
-          <SelectNetwork />
+          {/* <SelectNetwork />
           {searchControl && (
             <AnimatedPressable
               onPress={toggleSearchVisibility}
@@ -124,7 +124,7 @@ const TabsAndSearch: FC<Props> = ({ openTab, setOpenTab, searchControl, sessionI
                 width={16}
               />
             </AnimatedPressable>
-          )}
+          )} */}
           {isSearchVisible && (
             <View style={[styles.searchContainer]} ref={searchRef}>
               <Search

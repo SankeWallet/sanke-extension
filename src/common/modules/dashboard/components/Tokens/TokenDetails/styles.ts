@@ -48,7 +48,8 @@ const getStyles = (theme: ThemeProps) =>
       backgroundColor: theme.primaryBackground,
       ...common.borderRadiusPrimary,
       ...flexbox.directionRow,
-      ...flexbox.wrap
+      ...flexbox.wrap,
+      ...flexbox.justifyCenter
     },
     action: {
       width: '25%',

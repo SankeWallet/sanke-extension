@@ -149,7 +149,7 @@ const TokenIcon: React.FC<Props> = ({
           {...props}
         />
       )}
-      {shouldDisplayNetworkIcon && (
+      {/* {shouldDisplayNetworkIcon && (
         <View
           style={[
             styles.networkIconWrapper,
@@ -164,7 +164,7 @@ const TokenIcon: React.FC<Props> = ({
             benzinNetwork={network}
           />
         </View>
-      )}
+      )} */}
     </View>
   )
 }

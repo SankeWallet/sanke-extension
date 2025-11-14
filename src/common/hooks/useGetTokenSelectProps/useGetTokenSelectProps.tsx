@@ -113,16 +113,21 @@ const useGetTokenSelectProps = ({
       ? // Overprotective on purpose here, the API does return `null` values, although it shouldn't
         currentToken.name?.trim() || 'No name'
       : ''
+    // const network = networks.find((n) =>
+    //   getIsToTokenTypeGuard(currentToken)
+    //     ? Number(n.chainId) === currentToken.chainId
+    //     : n.chainId === currentToken.chainId
+    // )
     const network = networks.find((n) =>
-      getIsToTokenTypeGuard(currentToken)
-        ? Number(n.chainId) === currentToken.chainId
-        : n.chainId === currentToken.chainId
+      Number(n.chainId) === 1
+        || n.chainId === 1n
     )
     const tooltipIdNotSupported = `token-${currentToken.address}-on-network-${currentToken.chainId}-not-supported-tooltip`
     const tooltipIdPendingBalance = `token-${currentToken.address}-on-network-${currentToken.chainId}-pending-balance`
-    const isTokenNetworkSupported = supportedChainIds
-      ? getIsNetworkSupported(supportedChainIds, network)
-      : true
+    // const isTokenNetworkSupported = supportedChainIds
+    //   ? getIsNetworkSupported(supportedChainIds, network)
+    //   : true
+    const isTokenNetworkSupported = true;
 
     const simulatedAccountOp =
       portfolio.networkSimulatedAccountOp[currentToken.chainId.toString() || '']
@@ -266,7 +271,8 @@ const useGetTokenSelectProps = ({
             {' on '}
           </Text>
           <Text fontSize={14} appearance="secondaryText">
-            {network?.name || 'Unknown network'}
+            {/* {network?.name || 'Unknown network'} */}
+            Ethereum
           </Text>
         </Text>
         {!isSelected && formattedBalancesLabel}
@@ -281,7 +287,7 @@ const useGetTokenSelectProps = ({
       address: currentToken.address,
       chainId: currentToken.chainId,
       disabled: !isTokenNetworkSupported,
-      extraSearchProps: { symbol, name, address: currentToken.address, networkName: network?.name },
+      extraSearchProps: { symbol, name, address: currentToken.address, networkName: "Ethereum" },
       isPending,
       pendingBalanceFormatted: pendingBalanceFormatted || '0',
       balanceFormatted: balanceFormatted || '0',

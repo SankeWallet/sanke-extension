@@ -1,5 +1,5 @@
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react'
-import { Animated, Pressable, View } from 'react-native'
+import { Animated, ImageBackground, Pressable, View } from 'react-native'
 
 import formatDecimals from '@ambire-common/utils/formatDecimals/formatDecimals'
 import SkeletonLoader from '@common/components/SkeletonLoader'
@@ -21,14 +21,14 @@ import useHover, { AnimatedPressable } from '@web/hooks/useHover'
 import useMainControllerState from '@web/hooks/useMainControllerState'
 import useSelectedAccountControllerState from '@web/hooks/useSelectedAccountControllerState'
 
-import GasTankButton from '../DashboardHeader/GasTankButton'
+import Spinner from '@common/components/Spinner'
 import BalanceAffectingErrors from './BalanceAffectingErrors'
 import RefreshIcon from './RefreshIcon'
 import getStyles from './styles'
 
 interface Props {
   openReceiveModal: () => void
-  openGasTankModal: () => void
+  openGasTankModal?: () => void
   animatedOverviewHeight: Animated.Value
   dashboardOverviewSize: {
     width: number
@@ -41,6 +41,7 @@ interface Props {
     width: number
     height: number
   }) => void
+  isPrivateAccountLoading?: boolean
 }
 
 // We create a reusable height constant for both the Balance line-height and the Balance skeleton.
@@ -49,11 +50,11 @@ const BALANCE_HEIGHT = 34
 
 const DashboardOverview: FC<Props> = ({
   openReceiveModal,
-  openGasTankModal,
   animatedOverviewHeight,
   dashboardOverviewSize,
   setDashboardOverviewSize,
-  onGasTankButtonPosition
+  onGasTankButtonPosition,
+  isPrivateAccountLoading
 }) => {
   const { dispatch } = useBackgroundService()
   const { t } = useTranslation()
@@ -131,10 +132,10 @@ const DashboardOverview: FC<Props> = ({
                 outputRange: [SPACING_TY, SPACING],
                 extrapolate: 'clamp'
               }),
-              backgroundColor:
-                themeType === THEME_TYPES.DARK
-                  ? `${DASHBOARD_OVERVIEW_BACKGROUND}80`
-                  : DASHBOARD_OVERVIEW_BACKGROUND,
+              // backgroundColor:
+              //   themeType === THEME_TYPES.DARK
+              //     ? `${DASHBOARD_OVERVIEW_BACKGROUND}80`
+              //     : DASHBOARD_OVERVIEW_BACKGROUND,
               overflow: 'hidden'
             }
           ]}
@@ -145,11 +146,20 @@ const DashboardOverview: FC<Props> = ({
             })
           }}
         >
-          <Gradients
-            width={dashboardOverviewSize.width}
-            height={dashboardOverviewSize.height}
-            selectedAccount={account?.addr || null}
+          <ImageBackground
+            source={require('@web/assets/bg-dashboard-overview.png')}
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              width: '100%',
+              height: '100%',
+            }}
+            resizeMode="cover"
           />
+          {/* <Gradients width={dashboardOverviewSize.width} height={dashboardOverviewSize.height} /> */}
           <View style={{ zIndex: 2 }}>
             <DashboardHeader />
             <Animated.View
@@ -240,12 +250,25 @@ const DashboardOverview: FC<Props> = ({
                 </View>
 
                 <View style={[flexbox.directionRow, flexbox.alignCenter]}>
-                  <GasTankButton
-                    onPress={openGasTankModal}
-                    onPosition={onGasTankButtonPositionWrapped}
-                    portfolio={portfolio}
-                    account={account}
-                  />
+                  {isPrivateAccountLoading && (
+                    <>
+                      <Spinner
+                        variant="white"
+                        style={{
+                          width: 24,
+                          height: 24
+                        }}
+                      />
+                      <Text
+                        fontSize={16}
+                        shouldScale={false}
+                        weight="number_bold"
+                        color={theme.primaryBackground}
+                      >
+                        Loading Private Account
+                      </Text>
+                    </>
+                  )}
                   <BalanceAffectingErrors
                     reloadAccount={reloadAccount}
                     networksWithErrors={networksWithErrors}

@@ -182,7 +182,8 @@ const Button = ({
         {
           property: 'backgroundColor',
           from: theme.primary,
-          to: theme.primaryLight
+          to: theme.primaryLight,
+          color: theme.primaryText
         },
         ...(themeType === THEME_TYPES.DARK
           ? [

@@ -37,12 +37,36 @@ const NetworksSettingsScreen = () => {
 
   const { setCurrentSettingsPage } = useContext(SettingsRoutesContext)
   const { theme, themeType } = useTheme()
-  const [selectedChainId, setSelectedChainId] = useState(() => {
-    const parsedSearchParams = new URLSearchParams(searchParams)
-    if (parsedSearchParams.has('chainId'))
-      return BigInt(parsedSearchParams.get('chainId') as string)
 
-    return undefined
+  const sepoliaNetwork = useMemo(
+    () => allNetworks.find((n) => n.chainId === 11155111n), // Sepolia chainId
+    [allNetworks]
+  )
+
+  const fakeEthereumNetwork = useMemo(() => {
+    if (!sepoliaNetwork) return null
+    
+    return {
+      ...sepoliaNetwork,
+      name: 'Ethereum', // Override name
+      chainId: 1n, // Fake as Ethereum chainId
+      // You can override other properties too if needed:
+      // explorerUrl: 'https://etherscan.io',
+      // platformId: 'ethereum',
+      // nativeAssetId: 'ethereum',
+      rpcUrls: [`https://eth-mainnet.g.alchemy.com/v2/${process.env.REACT_APP_ALCHEMY_API_KEY}`],
+      explorerUrl: 'https://etherscan.io',
+    }
+  }, [sepoliaNetwork])
+
+
+  const [selectedChainId, setSelectedChainId] = useState(() => {
+    return 1n;
+    // const parsedSearchParams = new URLSearchParams(searchParams)
+    // if (parsedSearchParams.has('chainId'))
+    //   return BigInt(parsedSearchParams.get('chainId') as string)
+
+    // return undefined
   })
 
   const shouldOpenBottomSheet = useMemo(() => {
@@ -51,21 +75,30 @@ const NetworksSettingsScreen = () => {
     return parsedSearchParams.has('addNetwork')
   }, [searchParams])
 
+  // const selectedNetwork = useMemo(
+  //   () => allNetworks.find((n) => n.chainId === selectedChainId),
+  //   [allNetworks, selectedChainId]
+  // )
   const selectedNetwork = useMemo(
-    () => allNetworks.find((n) => n.chainId === selectedChainId),
-    [allNetworks, selectedChainId]
+    () => fakeEthereumNetwork,
+    [fakeEthereumNetwork]
   )
-
+  
   const search = watch('search')
 
   useEffect(() => {
     setCurrentSettingsPage('networks')
   }, [setCurrentSettingsPage])
 
+  // const filteredNetworkBySearch = useMemo(
+  //   () =>
+  //     allNetworks.filter((network) => network.name.toLowerCase().includes(search.toLowerCase())),
+  //   [allNetworks, search]
+  // )
+
   const filteredNetworkBySearch = useMemo(
-    () =>
-      allNetworks.filter((network) => network.name.toLowerCase().includes(search.toLowerCase())),
-    [allNetworks, search]
+    () => fakeEthereumNetwork ? [fakeEthereumNetwork] : [],
+    [fakeEthereumNetwork]
   )
 
   const filteredEnabledNetworks = useMemo(
@@ -79,7 +112,8 @@ const NetworksSettingsScreen = () => {
   )
 
   const handleSelectNetwork = useCallback((chainId: bigint) => {
-    setSelectedChainId(chainId)
+    // Keep it as "Ethereum"
+    setSelectedChainId(1n)
   }, [])
 
   const navigateToChainlist = useCallback(async () => {
@@ -112,7 +146,7 @@ const NetworksSettingsScreen = () => {
                     ))}
                   </View>
                 )}
-                {filteredDisabledNetworks.length > 0 && (
+                {/* {filteredDisabledNetworks.length > 0 && (
                   <>
                     <Text weight="medium" fontSize={16} style={[spacings.mbTy]}>
                       {t('Disabled networks')}
@@ -127,7 +161,7 @@ const NetworksSettingsScreen = () => {
                       />
                     ))}
                   </>
-                )}
+                )} */}
               </>
             ) : (
               <View style={[flexbox.flex1, flexbox.alignCenter, flexbox.justifyCenter]}>
