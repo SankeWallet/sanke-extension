@@ -1,25 +1,25 @@
-# Ambire Wallet
+# Sanke Wallet
 
 <div align="center">
-  <a href="https://chromewebstore.google.com/detail/ambire-wallet/ehgjhhccekdedpbkifaojjaefeohnoea" target="_blank">
-    <img src="./mockups/mockup-dashboard.png" alt="Ambire Wallet Dashboard" />
+  <a href="https://chromewebstore.google.com/detail/Sanke-wallet/ehgjhhccekdedpbkifaojjaefeohnoea" target="_blank">
+    <img src="./mockups/mockup-dashboard.png" alt="Sanke Wallet Dashboard" />
   </a>
 
   <p>
     The secure & easy-to-use Web3 wallet. EIP-7702 ready.<br />
-    <a href="https://chromewebstore.google.com/detail/ambire-wallet/ehgjhhccekdedpbkifaojjaefeohnoea" target="_blank">
+    <a href="https://chromewebstore.google.com/detail/Sanke-wallet/ehgjhhccekdedpbkifaojjaefeohnoea" target="_blank">
       <strong>Download Extension for Webkit Browsers 🔥</strong>
     </a>
     <br />
     <em>(Chrome, Brave, Opera, Edge, Arc)</em>
     <br /><br />
     💌 Request Invite Code:
-    <a href="https://discord.com/invite/Ambire" target="_blank">Discord</a> |
-    <a href="https://t.me/AmbireOfficial" target="_blank">Telegram</a>
+    <a href="https://discord.com/invite/Sanke" target="_blank">Discord</a> |
+    <a href="https://t.me/SankeOfficial" target="_blank">Telegram</a>
     <br />
     🐞
-    <a href="https://github.com/AmbireTech/extension/issues">Report a Bug</a> ·
-    <a href="https://forum.ambire.com/" target="_blank">Request Features</a>
+    <a href="https://github.com/SankeTech/extension/issues">Report a Bug</a> ·
+    <a href="https://forum.Sanke.com/" target="_blank">Request Features</a>
   </p>
 </div>
 
@@ -39,7 +39,7 @@ Install all dependencies:
 yarn install
 ```
 
-Install the [ambire-common](https://github.com/AmbireTech/ambire-common) submodule, a common ground for the Ambire apps, run:
+Install the [Sanke-common](https://github.com/SankeTech/Sanke-common) submodule, a common ground for the Sanke apps, run:
 
 ```bash
 git submodule init
@@ -131,10 +131,10 @@ Make sure your code editor has plugins that support the following configuration 
   Then, in xCode manually do (TODO: automate these steps, it turned out to be a huge challenge):
 
   - Delete "walletTests" and "walletUITests" targets.
-  - For both targets (macOS and extension): Signing & Capabilities: Team: "Ambire Tech Ltd", Signing Certificate: Development
+  - For both targets (macOS and extension): Signing & Capabilities: Team: "Sanke Tech Ltd", Signing Certificate: Development
   - For both targets (macOS and extension): General - Identity - Version: X.X (should match the version in the app.json file, example: `4.36`) and Build: X (integer, bump up on every next build submitted to the App Store Connect, example: `3`)
   - For the macOS target: General - App Category: "Utilities"
-  - For the extension target: General - Identity - Bundle Identifier: `com.ambire.app.wallet.extension`
+  - For the extension target: General - Identity - Bundle Identifier: `com.Sanke.app.wallet.extension`
 
 ### Extract Source Maps
 
@@ -158,7 +158,7 @@ The production-optimized builds come with source maps files included. When prepa
 
 - For the Safari build: not implemented yet.
 
-For more details, including how to trace /deminify a production reported error, see [#3191](https://github.com/AmbireTech/ambire-app/pull/3191).
+For more details, including how to trace /deminify a production reported error, see [#3191](https://github.com/SankeTech/Sanke-app/pull/3191).
 
 ### Store-prepared Builds
 
@@ -172,17 +172,17 @@ Automates the steps before every extension extension store release that could be
 yarn build:extensions
 ```
 
-And find the resulting zips in the "build" folder as `ambire-extension-<VERSION>-<TYPE>.zip`
+And find the resulting zips in the "build" folder as `Sanke-extension-<VERSION>-<TYPE>.zip`
 
 ## Mobile Apps
 
-The Ambire v2 compatible mobile apps are yet to be developed. Coming sometime in the near future 🤞
+The Sanke v2 compatible mobile apps are yet to be developed. Coming sometime in the near future 🤞
 
 ## Explorer (Old name: Benzin)
 
-Ambire's transaction explorer, that makes human readable ERC-4337 transactions and contract interactions.
+Sanke's transaction explorer, that makes human readable ERC-4337 transactions and contract interactions.
 
-Comes not only as integrated module in the Ambire extension(s), but as a standalone web app also.
+Comes not only as integrated module in the Sanke extension(s), but as a standalone web app also.
 
 ### Development-optimized Build
 
@@ -200,9 +200,9 @@ yarn build:web:benzin
 
 And find the resulting build in the "build/benzin-prod" folder.
 
-## Ambire Rewards
+## Sanke Rewards
 
-Ambire Rewards is a gamified testing web3 app for the Ambire browser extensions. It is designed to users you discover the power of Smart Accounts via an epic onchain adventure. [Read more](https://rewards.ambire.com/).
+Sanke Rewards is a gamified testing web3 app for the Sanke browser extensions. It is designed to users you discover the power of Smart Accounts via an epic onchain adventure. [Read more](https://rewards.Sanke.com/).
 
 ### Development-optimized Build
 
