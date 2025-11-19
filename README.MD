@@ -1,25 +1,18 @@
 # Sanke Wallet
 
 <div align="center">
-  <a href="https://chromewebstore.google.com/detail/Sanke-wallet/ehgjhhccekdedpbkifaojjaefeohnoea" target="_blank">
+  <!--<a href="https://chromewebstore.google.com/detail/Sanke-wallet/ehgjhhccekdedpbkifaojjaefeohnoea" target="_blank">
     <img src="./mockups/mockup-dashboard.png" alt="Sanke Wallet Dashboard" />
-  </a>
+  </a>-->
 
   <p>
     The secure & easy-to-use Web3 wallet. EIP-7702 ready.<br />
-    <a href="https://chromewebstore.google.com/detail/Sanke-wallet/ehgjhhccekdedpbkifaojjaefeohnoea" target="_blank">
+    <a href="https://chromewebstore.google.com/detail/sanke-wallet/dbpfcogcbnholapjbnhbdnkcjknomkke" target="_blank">
       <strong>Download Extension for Webkit Browsers 🔥</strong>
     </a>
     <br />
     <em>(Chrome, Brave, Opera, Edge, Arc)</em>
     <br /><br />
-    💌 Request Invite Code:
-    <a href="https://discord.com/invite/Sanke" target="_blank">Discord</a> |
-    <a href="https://t.me/SankeOfficial" target="_blank">Telegram</a>
-    <br />
-    🐞
-    <a href="https://github.com/SankeTech/extension/issues">Report a Bug</a> ·
-    <a href="https://forum.Sanke.com/" target="_blank">Request Features</a>
   </p>
 </div>
 

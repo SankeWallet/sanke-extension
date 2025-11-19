@@ -1,6 +1,6 @@
 # E2E Playwright Tests
 
-This repository contains **end-to-end (E2E) tests** for the Ambire application, implemented using [Playwright](https://playwright.dev/) and [TypeScript](https://www.typescriptlang.org/).
+This repository contains **end-to-end (E2E) tests** for the sanke application, implemented using [Playwright](https://playwright.dev/) and [TypeScript](https://www.typescriptlang.org/).
 
 ## 📁 Structure
 
